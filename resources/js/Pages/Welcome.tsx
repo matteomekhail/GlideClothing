@@ -18,18 +18,12 @@ interface WelcomeProps extends PageProps {
     stripeKey: string;
 }
 
-export default function Welcome({stripeKey }: WelcomeProps) {
+export default function Welcome({ stripeKey }: WelcomeProps) {
     return (
         <>
             <Head title="Glide" />
             <Layout>
-                <HeroSection />
-                <TechStack />
-                <FeaturesShowcase />
-                <ComparisonTable />
-                <GettingStarted />
-                <PricingPlans stripeKey={stripeKey} />
-                <FAQ faqs={faqData} />
+                <div></div>
             </Layout>
         </>
     );
