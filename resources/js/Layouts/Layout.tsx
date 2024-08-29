@@ -1,6 +1,6 @@
 import React, { useState, ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, Heart, User, ShoppingBag, Search, ChevronDown, X } from 'lucide-react';
+import { Menu, Heart, User, ShoppingBag, ChevronDown, X } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from "@/Components/ui/sheet";
 import { Button } from "@/Components/ui/button";
 
@@ -100,7 +100,6 @@ return (
               </div>
             </SheetContent>
           </Sheet>
-          <Button variant="ghost" size="icon"><Search /></Button>
           <img src="/api/placeholder/120/40" alt="Glide Logo" className="h-8" />
           <div className="flex space-x-2">
             <Button variant="ghost" size="icon"><User /></Button>
