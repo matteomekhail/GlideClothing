@@ -23,7 +23,7 @@ export default function Welcome({ stripeKey }: WelcomeProps) {
         <>
             <Head title="Glide" />
             <Layout>
-                <div></div>
+                <HeroSection videoSrc="/videos/Gymshark.mp4" />
             </Layout>
         </>
     );

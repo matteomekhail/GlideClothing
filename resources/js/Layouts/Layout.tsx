@@ -4,30 +4,7 @@ import { Menu, Heart, User, ShoppingBag, ChevronDown, ChevronUp, X } from 'lucid
 import { Sheet, SheetContent, SheetTrigger } from "@/Components/ui/sheet";
 import { Button } from "@/Components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/Components/ui/collapsible";
-import { Facebook, Youtube, Instagram, MessageCircle } from 'lucide-react';
-
-const DiscordIcon = () => (
-  <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-  </svg>
-);
-
-const PinterestIcon = () => (
-  <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10"></circle>
-    <path d="M8 12h8"></path>
-    <path d="M12 8v8"></path>
-  </svg>
-);
-
-const TikTokIcon = () => (
-  <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M9 12A4 4 0 1 0 9 20 4 4 0 1 0 9 12z"></path>
-    <path d="M15 8a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
-    <path d="M15 8v8a4 4 0 1 1-4-4"></path>
-  </svg>
-);
-
+    
 // Icone dei metodi di pagamento
 const PaymentIcons = () => (
   <div className="flex space-x-2">
@@ -318,14 +295,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
         <div className="mt-8 flex flex-col md:flex-row justify-between items-center">
           <PaymentIcons />
-          <div className="flex space-x-4 mt-4 md:mt-0">
-            <a href="#" className="text-gray-600 hover:text-black"><DiscordIcon /></a>
-            <a href="#" className="text-gray-600 hover:text-black"><Facebook size={24} /></a>
-            <a href="#" className="text-gray-600 hover:text-black"><PinterestIcon /></a>
-            <a href="#" className="text-gray-600 hover:text-black"><Youtube size={24} /></a>
-            <a href="#" className="text-gray-600 hover:text-black"><Instagram size={24} /></a>
-            <a href="#" className="text-gray-600 hover:text-black"><TikTokIcon /></a>
-          </div>
         </div>
 
         <div className="mt-8 text-sm text-gray-600 flex flex-col md:flex-row justify-between items-center">
@@ -338,12 +307,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <a href="#" className="hover:underline">Modern Slavery</a>
           </div>
         </div>
-      </div>
-
-      <div className="fixed bottom-4 right-4">
-        <button className="bg-black text-white rounded-full p-4">
-          <MessageCircle size={24} />
-        </button>
       </div>
     </footer>
         </div>
