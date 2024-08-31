@@ -1,8 +1,9 @@
 import React, { useState, ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, Heart, User, ShoppingBag, ChevronDown, X } from 'lucide-react';
+import { Menu, Heart, User, ShoppingBag, ChevronDown, ChevronUp, X } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from "@/Components/ui/sheet";
 import { Button } from "@/Components/ui/button";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/Components/ui/collapsible";
 
 interface LayoutProps {
   children: ReactNode;
@@ -16,6 +17,7 @@ interface MenuItem {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [activeCategory, setActiveCategory] = useState<string>('WOMEN\'S');
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const categories: string[] = ['WOMEN\'S', 'MEN\'S', 'ACCESSORIES'];
   const menuItems: Record<string, MenuItem[]> = {
@@ -46,26 +48,64 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     ],
   };
 
-  const MobileMenuItem: React.FC<{ item: MenuItem }> = ({ item }) => (
-    <div className="py-4 border-b border-gray-200">
-      <div className="flex justify-between items-center">
-        <span className="text-lg font-semibold">{item.title}</span>
-        <ChevronDown size={20} />
-      </div>
-    </div>
-  );
+  const MobileMenuItem: React.FC<{ item: MenuItem }> = ({ item }) => {
+    const [isOpen, setIsOpen] = useState(false);
 
-return (
+    return (
+      <Collapsible
+        open={isOpen}
+        onOpenChange={setIsOpen}
+        className="py-4 border-b border-gray-200"
+      >
+        <CollapsibleTrigger className="flex justify-between items-center w-full">
+          <span className="text-lg font-semibold">{item.title}</span>
+          {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+        </CollapsibleTrigger>
+        <CollapsibleContent>
+          <AnimatePresence>
+            {isOpen && (
+              <motion.ul
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+                className="mt-2 space-y-2"
+              >
+                {item.items.map((subItem, index) => (
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2, delay: index * 0.05 }}
+                  >
+                    <a href="#" className="block text-gray-600 hover:text-gray-900">
+                      {subItem}
+                    </a>
+                  </motion.li>
+                ))}
+              </motion.ul>
+            )}
+          </AnimatePresence>
+        </CollapsibleContent>
+      </Collapsible>
+    );
+  };
+
+  return (
     <div className="min-h-screen flex flex-col">
       <header className="lg:hidden">
         <div className="flex justify-between items-center p-4 border-b">
-          <Sheet>
+          <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon"><Menu /></Button>
             </SheetTrigger>
             <SheetContent side="left" className="w-full">
               <div className="flex justify-between items-center mb-6">
                 <span className="text-xl font-bold">SHOP</span>
+                <Button variant="ghost" size="icon" onClick={() => setIsSheetOpen(false)}>
+                  <X />
+                </Button>
               </div>
               <div className="flex justify-between mb-6">
                 {categories.map((category) => (
