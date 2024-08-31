@@ -74,9 +74,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 {item.items.map((subItem, index) => (
                   <motion.li
                     key={index}
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.2, delay: index * 0.05 }}
                   >
                     <a href="#" className="block text-gray-600 hover:text-gray-900">
@@ -118,13 +118,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   </button>
                 ))}
               </div>
-              <AnimatePresence mode="wait">
+              <AnimatePresence initial={false} mode="wait">
                 <motion.div
                   key={activeCategory}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.2 }}
+                  initial={{ opacity: 0, x: -300 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 300 }}
+                  transition={{ duration: 0.3 }}
                 >
                   {menuItems[activeCategory].map((item, index) => (
                     <MobileMenuItem key={index} item={item} />
@@ -140,7 +140,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </div>
             </SheetContent>
           </Sheet>
-          <img src="/api/placeholder/120/40" alt="Glide Logo" className="h-8" />
+          <img src="/img/GlideLogo.png" alt="Glide Logo" className="h-8" />
           <div className="flex space-x-2">
             <Button variant="ghost" size="icon"><User /></Button>
             <Button variant="ghost" size="icon"><ShoppingBag /></Button>
@@ -161,7 +161,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           </div>
         </div>
         <div className="flex justify-between items-center px-6 py-4">
-          <img src="/api/placeholder/120/40" alt="Glide Logo" className="h-8" />
+          <img src="/img/GlideLogo.png" alt="Glide Logo" className="h-8" />
           <nav className="flex space-x-6">
             {categories.map((category) => (
               <div
