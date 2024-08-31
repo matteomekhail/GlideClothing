@@ -35,7 +35,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ videoSrc }) => {
           <Button variant="default" size="lg" className="bg-white text-black hover:bg-gray-200">
             SHOP WOMEN
           </Button>
-          <Button variant="outline" size="lg" className="bg-white text-black bg-gray-100 hover:bg-gray-200">
+          <Button variant="outline" size="lg" className="text-black bg-gray-100 hover:bg-gray-200">
             SHOP MEN
           </Button>
         </div>
