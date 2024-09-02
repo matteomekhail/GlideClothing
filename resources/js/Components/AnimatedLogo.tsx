@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const logoColors = ['green', 'pink', 'yellow', 'blue'];
+const logoColors = ['Green', 'Pink', 'Yellow', 'Blue'];
 
 const AnimatedLogo = () => {
     const [currentLogoIndex, setCurrentLogoIndex] = useState(0);
