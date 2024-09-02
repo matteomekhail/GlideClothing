@@ -135,7 +135,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                             <div className="mt-6">
                                 <h3 className="text-lg font-semibold mb-2">MORE</h3>
                                 <div className="space-y-2">
-                                    <a href="#" className="block text-gray-600">Help</a>
                                     <a href="#" className="block text-gray-600">Sign Up</a>
                                 </div>
                             </div>
@@ -154,7 +153,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <div className="flex justify-between items-center px-6 py-2 bg-gray-100 text-sm">
                     <div className="flex space-x-4">
                         <a href="#" className="text-gray-600">Account</a>
-                        <a href="#" className="text-gray-600">Help</a>
                         <a href="#" className="text-gray-600">Sign Up</a>
                     </div>
                     <div className="flex items-center space-x-4">
@@ -240,7 +238,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                         <div>
                             <h3 className="font-bold mb-4">HELP</h3>
                             <ul className="space-y-2">
-                                <li><a href="#" className="hover:underline">FAQ</a></li>
+                                <li><a href="/FAQ" className="hover:underline">FAQ</a></li>
                                 <li><a href="#" className="hover:underline">Delivery Information</a></li>
                                 <li><a href="#" className="hover:underline">Returns Policy</a></li>
                                 <li><a href="#" className="hover:underline">Make A Return</a></li>
