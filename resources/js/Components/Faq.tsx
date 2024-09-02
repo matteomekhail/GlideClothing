@@ -1,9 +1,21 @@
-import React, { useState } from 'react';
-import { Clock } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Clock, ChevronDown } from 'lucide-react';
 
 const FAQComponent = () => {
   const [activeSection, setActiveSection] = useState('Delivery Information');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768); // Adjust this breakpoint as needed
+    };
+
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
   const sections = [
     'Delivery Information',
     'Customs & Import Fees',
@@ -148,23 +160,60 @@ const FAQComponent = () => {
     }
   };
 
-  return (
-    <div className="flex max-w-5xl mx-auto bg-gray-100 mt-8">
-      <div className="w-64 bg-white p-4 rounded-lg shadow-sm mr-4">
-        <h3 className="font-bold mb-4">ARTICLES IN THIS CATEGORY</h3>
-        {sections.map((section) => (
-          <button
-            key={section}
-            className={`w-full text-left py-2 px-3 mb-1 rounded ${
-              activeSection === section ? 'bg-black text-white' : 'hover:bg-gray-100'
-            }`}
-            onClick={() => setActiveSection(section)}
-          >
-            {section}
-          </button>
-        ))}
+    const MobileDropdown = () => (
+    <div className="bg-white p-4 rounded-lg shadow-sm mb-4">
+      <h3 className="font-bold mb-2">ARTICLES IN THIS CATEGORY</h3>
+      <div className="relative">
+        <button
+          className="w-full text-left py-2 px-3 border rounded flex justify-between items-center"
+          onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+        >
+          {activeSection}
+          <ChevronDown className={`w-5 h-5 transition-transform ${isDropdownOpen ? 'transform rotate-180' : ''}`} />
+        </button>
+        {isDropdownOpen && (
+          <div className="absolute z-10 w-full bg-white border rounded mt-1">
+            {sections.map((section) => (
+              <button
+                key={section}
+                className={`w-full text-left py-2 px-3 ${
+                  activeSection === section ? 'bg-gray-100' : 'hover:bg-gray-50'
+                }`}
+                onClick={() => {
+                  setActiveSection(section);
+                  setIsDropdownOpen(false);
+                }}
+              >
+                {section}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
-      <div className="flex-1">
+    </div>
+  );
+
+  const DesktopSidebar = () => (
+    <div className="w-64 bg-white p-4 rounded-lg shadow-sm mr-4">
+      <h3 className="font-bold mb-4">ARTICLES IN THIS CATEGORY</h3>
+      {sections.map((section) => (
+        <button
+          key={section}
+          className={`w-full text-left py-2 px-3 mb-1 rounded ${
+            activeSection === section ? 'bg-black text-white' : 'hover:bg-gray-100'
+          }`}
+          onClick={() => setActiveSection(section)}
+        >
+          {section}
+        </button>
+      ))}
+    </div>
+  );
+
+  return (
+    <div className={`mx-auto bg-gray-100 ${isMobile ? 'p-4' : 'flex max-w-5xl mt-8'}`}>
+      {isMobile ? <MobileDropdown /> : <DesktopSidebar />}
+      <div className={isMobile ? 'w-full' : 'flex-1'}>
         {renderContent()}
       </div>
     </div>
