@@ -43,13 +43,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({ videoSrc }) => {
           </Button>
         </div>
       </div>
-
-      {/* Pulsante di pausa */}
-      <button className="absolute bottom-4 right-4 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full p-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 text-white">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      </button>
     </div>
   );
 };
