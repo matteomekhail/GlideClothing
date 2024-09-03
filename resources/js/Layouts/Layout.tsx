@@ -31,10 +31,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
     const [isSheetOpen, setIsSheetOpen] = useState(false);
 
-    const categories: string[] = ['COLLECTION\S','WOMEN\'S', 'MEN\'S', 'ACCESSORIES'];
+    const categories: string[] = ['COLLECTION\S', 'WOMEN\'S', 'MEN\'S', 'ACCESSORIES'];
     const menuItems: Record<string, MenuItem[]> = {
         'COLLECTION\S': [
-            { title: 'CHIC TECH MATRIX', items: []},
+            { title: 'CHIC TECH MATRIX', items: [] },
         ],
         'WOMEN\'S': [
             { title: 'PRODUCTS', items: ['All Products', 'Leggings', 'T-Shirts & Tops', 'Sports Bras', 'Hoodies', 'Gym Jackets', 'Crop Tops'] },
@@ -156,7 +156,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                         <a href="#" className="text-gray-600">Sign Up</a>
                     </div>
                     <div className="flex items-center space-x-4">
-                        <a href="#" className="text-gray-600">Blog</a>
+                        <a href={route('blog.index')} className="text-gray-600">Blog</a>
                     </div>
                 </div>
                 <div className="flex justify-between items-center px-6 py-4">
@@ -276,7 +276,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     </div>
 
                     <div className="mt-8 text-sm text-gray-600 flex flex-col md:flex-row justify-between items-center">
-                        <div>© 2024 | Glide Limited | All Rights Reserved. | We Do Gym.</div>
+                        <div>© 2024 | Glide Limited | All Rights Reserved. |</div>
                         <div className="flex flex-wrap justify-center md:justify-end space-x-4 mt-4 md:mt-0">
                             <a href="#" className="hover:underline">Terms and Conditions</a>
                             <a href="#" className="hover:underline">Terms of Use</a>

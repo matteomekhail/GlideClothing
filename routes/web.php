@@ -5,6 +5,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\BlogPostController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -23,6 +24,9 @@ Route::get('/FAQ', function () {
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/blog', [BlogPostController::class, 'index'])->name('blog.index');
+Route::get('/blog/{slug}', [BlogPostController::class, 'show'])->name('blog.show');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
