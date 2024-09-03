@@ -261,9 +261,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                         <div>
                             <h3 className="font-bold mb-4">MORE ABOUT GLIDE</h3>
                             <div className="grid grid-cols-3 gap-4">
-                                <div className="bg-gray-100 p-4 flex flex-col items-center justify-center">
-                                    <span className="text-xs font-semibold">BLOG</span>
-                                </div>
+                                <a href='/blog'>
+                                    <div className="bg-gray-100 p-4 flex flex-col items-center justify-center">
+                                        <span className="text-xs font-semibold">BLOG</span>
+                                    </div>
+                                </a>
                                 <div className="bg-gray-100 p-4 flex flex-col items-center justify-center">
                                     <span className="text-xs font-semibold">EMAIL SIGN UP</span>
                                 </div>
