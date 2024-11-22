@@ -1,6 +1,6 @@
 import React, { useState, ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, Heart, User, ShoppingBag, ChevronDown, ChevronUp, X } from 'lucide-react';
+import { Menu, User, ShoppingBag, ChevronDown, ChevronUp, X } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from "@/Components/ui/sheet";
 import { Button } from "@/Components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/Components/ui/collapsible";
@@ -27,27 +27,20 @@ interface MenuItem {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-    const [activeCategory, setActiveCategory] = useState<string>('WOMEN\'S');
     const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
     const [isSheetOpen, setIsSheetOpen] = useState(false);
 
-    const categories: string[] = ['COLLECTION\S', 'WOMEN\'S', 'MEN\'S', 'ACCESSORIES'];
+    /*const categories: string[] = ['CHIC TECH MATRIX'];
     const menuItems: Record<string, MenuItem[]> = {
-        'COLLECTION\S': [
-            { title: 'CHIC TECH MATRIX', items: [] },
-        ],
-        'WOMEN\'S': [
-            { title: 'PRODUCTS', items: ['All Products', 'Leggings', 'T-Shirts & Tops', 'Sports Bras', 'Hoodies', 'Gym Jackets', 'Crop Tops'] },
-            { title: 'ACCESSORIES', items: ['All Accessories'] },
-        ],
-        'MEN\'S': [
-            { title: 'PRODUCTS', items: ['All Products', 'Shorts', 'T-Shirts & Tops', 'Joggers', 'Hoodies'] },
-            { title: 'ACCESSORIES', items: ['All Accessories'] },
-        ],
-        'ACCESSORIES': [
-            { title: 'BAGS', items: ['All Bags', 'Shoulder Bags'] },
+        'CHIC TECH MATRIX': [
+            { title: 'ACCESSORIES', items: ['All Accessories', 'Bags'] },
         ],
     };
+
+    const getCurrentMenuItems = () => {
+        if (!hoveredCategory) return [];
+        return menuItems[hoveredCategory] || [];
+    }; */
 
     const MobileMenuItem: React.FC<{ item: MenuItem }> = ({ item }) => {
         const [isOpen, setIsOpen] = useState(false);
@@ -108,30 +101,30 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                                     <X />
                                 </Button>
                             </div>
-                            <div className="flex justify-between mb-6">
+                            {/*<div className="flex justify-between mb-6">
                                 {categories.map((category) => (
                                     <button
                                         key={category}
-                                        className={`py-2 px-4 ${activeCategory === category ? 'border-b-2 border-black' : ''}`}
-                                        onClick={() => setActiveCategory(category)}
+                                        className={`py-2 px-4 ${hoveredCategory === category ? 'border-b-2 border-black' : ''}`}
+                                        onClick={() => setHoveredCategory(category)}
                                     >
                                         {category}
                                     </button>
                                 ))}
-                            </div>
-                            <AnimatePresence initial={false} mode="wait">
+                            </div> */}
+                            {/*<AnimatePresence initial={false} mode="wait">
                                 <motion.div
-                                    key={activeCategory}
+                                    key={hoveredCategory}
                                     initial={{ opacity: 0, x: -300 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     exit={{ opacity: 0, x: 300 }}
                                     transition={{ duration: 0.3 }}
                                 >
-                                    {menuItems[activeCategory].map((item, index) => (
+                                    {getCurrentMenuItems().map((item: MenuItem, index: number) => (
                                         <MobileMenuItem key={index} item={item} />
                                     ))}
                                 </motion.div>
-                            </AnimatePresence>
+                            </AnimatePresence> */}
                             <div className="mt-6">
                                 <h3 className="text-lg font-semibold mb-2">MORE</h3>
                                 <div className="space-y-2">
@@ -161,7 +154,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 </div>
                 <div className="flex justify-between items-center px-6 py-4">
                     <AnimatedLogo />
-                    <nav className="flex space-x-6">
+                    {/*<nav className="flex space-x-6">
                         {categories.map((category) => (
                             <div
                                 key={category}
@@ -172,9 +165,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                                 <a href="#" className="text-gray-800 hover:text-gray-600">{category}</a>
                             </div>
                         ))}
-                    </nav>
+                    </nav> */}
                     <div className="flex items-center space-x-4">
-                        <Button variant="ghost" size="icon"><Heart /></Button>
                         <Button variant="ghost" size="icon"><User /></Button>
                         <Button variant="ghost" size="icon"><ShoppingBag /></Button>
                     </div>
@@ -195,7 +187,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     >
                         <div className="max-w-7xl mx-auto px-4 py-6">
                             <div className="grid grid-cols-6 gap-8">
-                                {menuItems[hoveredCategory].map((item, index) => (
+                                {/*{menuItems[hoveredCategory].map((item, index) => (
                                     <div key={index} className={index === menuItems[hoveredCategory].length - 1 ? 'col-span-2' : ''}>
                                         <h3 className="font-bold mb-2 text-gray-900">{item.title}</h3>
                                         <ul className="space-y-1">
@@ -206,7 +198,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                                             ))}
                                         </ul>
                                     </div>
-                                ))}
+                                ))} 
                                 {hoveredCategory === 'ACCESSORIES' && (
                                     <div className="col-span-2">
                                         <h3 className="font-bold mb-2 text-gray-900">FEATURED</h3>
@@ -214,7 +206,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                                             <span className="text-lg font-semibold">Best Selling Products</span>
                                         </div>
                                     </div>
-                                )}
+                                )} */}
                             </div>
                         </div>
                     </motion.div>

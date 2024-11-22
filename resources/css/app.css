@@ -71,3 +71,12 @@
     @apply bg-background text-foreground;
   }
 }
+
+.ring-offset-background:focus-visible {
+  --tw-ring-color: black;
+  --tw-ring-offset-color: white;
+}
+
+*:focus-visible {
+  outline-color: black;
+}
