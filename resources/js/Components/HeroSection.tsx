@@ -32,16 +32,16 @@ export default function HeroContent({ isVisible }: HeroContentProps) {
         </div>
 
         {/* Colonna delle immagini */}
-        <div className="relative h-[600px] hidden md:block">
+        <div className="relative h-[400px] md:h-[600px]">
           <img
             src="/img/Lifestyle/Box1.jpg"
             alt="Premium bag showcase"
-            className="absolute top-0 right-0 w-[400px] h-[400px] object-cover rounded-lg"
+            className="absolute top-0 right-0 w-[300px] md:w-[400px] h-[300px] md:h-[400px] object-cover rounded-lg"
           />
           <img
             src="/img/Lifestyle/Box2.jpg"
             alt="Lifestyle bag showcase"
-            className="absolute bottom-0 left-0 w-[300px] h-[300px] object-cover rounded-lg"
+            className="absolute bottom-0 left-0 w-[200px] md:w-[300px] h-[200px] md:h-[300px] object-cover rounded-lg"
           />
         </div>
       </div>

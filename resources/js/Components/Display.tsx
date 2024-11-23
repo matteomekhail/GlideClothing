@@ -85,11 +85,13 @@ export default function ProductDisplay() {
 
   return (
     <div className="container mx-auto px-4 py-8 lg:py-12">
+      <h1 className="text-3xl lg:text-4xl font-bold tracking-tight mb-6">Glide Signature Quilted Bag</h1>
+
       <motion.div 
         initial={false}
-        className="grid lg:grid-cols-2 gap-8 lg:gap-12"
+        className="grid lg:grid-cols-12 gap-8 lg:gap-12"
       >
-        <div className="relative space-y-4">
+        <div className="lg:col-span-7 relative space-y-4">
           <AnimatePresence mode="wait">
             <motion.div 
               key={`${currentVariant}-${currentImage}`}
@@ -97,7 +99,7 @@ export default function ProductDisplay() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="aspect-square overflow-hidden rounded-lg bg-background border"
+              className="aspect-square overflow-hidden rounded-lg bg-background"
             >
               <img
                 src={productVariants[currentVariant].images[currentImage]}
@@ -143,7 +145,7 @@ export default function ProductDisplay() {
                 }}
                 className={cn(
                   "relative flex-shrink-0 w-20 h-20 rounded-md overflow-hidden border-2",
-                  currentImage === index ? "border-primary" : "border-border"
+                  currentImage === index ? "border-primary" : ""
                 )}
               >
                 <img
@@ -157,60 +159,77 @@ export default function ProductDisplay() {
           </div>
         </div>
 
-        <div className="flex flex-col justify-between space-y-8">
-          <div className="space-y-6">
-            <div>
-              <h1 className="text-3xl lg:text-4xl font-bold tracking-tight">Glide Signature Quilted Bag</h1>
-              <p className="text-2xl mt-2 text-black font-semibold">$299.99</p>
+        <div className="lg:col-span-5 flex items-center">
+          <div className="border rounded-lg p-8 space-y-8 bg-white shadow-sm w-full">
+            {/* Prezzo */}
+            <div className="border-b pb-6">
+              <span className="text-xs text-muted-foreground">Price:</span>
+              <p className="text-4xl font-bold">
+                <span className="text-lg align-top">$</span>
+                299<span className="text-lg">.99</span>
+              </p>
             </div>
-            
-            <p className="text-muted-foreground text-base/relaxed">
-              Our signature quilted bag combines style and functionality. Perfect for everyday use or special occasions.
-            </p>
 
+            {/* Stato prodotto */}
+            <div className="flex items-center text-sm text-[hsl(142,76%,36%)]">
+              <span className="mr-2">●</span>
+              In Stock
+            </div>
+
+            {/* Colori */}
             <div className="space-y-4">
-              <div>
-                <h2 className="text-sm font-medium mb-3">Color</h2>
-                <RadioGroup
-                  value={currentVariant.toString()}
-                  onValueChange={(value) => setCurrentVariant(parseInt(value))}
-                  className="flex gap-3"
-                >
-                  {productVariants.map((variant, index) => (
-                    <Label
-                      key={variant.color}
-                      className="relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-offset-2 ring-offset-background"
-                    >
-                      <RadioGroupItem value={index.toString()} id={`color-${index}`} className="sr-only" />
-                      <motion.span
-                        whileHover={{ scale: 1.1 }}
-                        aria-hidden="true"
-                        className={cn(
-                          "h-8 w-8 rounded-full border shadow-sm transition-all",
-                          {
-                            'bg-gray-900': variant.color === 'Black',
-                            'bg-sky-400': variant.color === 'Blue',
-                            'bg-white': variant.color === 'White',
-                            'bg-pink-400': variant.color === 'Pink',
-                          }
-                        )}
-                      />
-                      <span className="sr-only">{variant.color}</span>
-                    </Label>
-                  ))}
-                </RadioGroup>
+              <h2 className="text-sm font-medium text-foreground">Color</h2>
+              <RadioGroup
+                value={currentVariant.toString()}
+                onValueChange={(value) => setCurrentVariant(parseInt(value))}
+                className="flex gap-4"
+              >
+                {productVariants.map((variant, index) => (
+                  <Label
+                    key={variant.color}
+                    className="relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-offset-2 ring-offset-background"
+                  >
+                    <RadioGroupItem value={index.toString()} id={`color-${index}`} className="sr-only" />
+                    <motion.span
+                      whileHover={{ scale: 1.1 }}
+                      aria-hidden="true"
+                      className={cn(
+                        "h-10 w-10 rounded-full shadow-sm transition-all",
+                        {
+                          'bg-[hsl(222.2,84%,4.9%)]': variant.color === 'Black',
+                          'bg-[hsl(199,95%,74%)]': variant.color === 'Blue',
+                          'bg-[hsl(210,40%,96.1%)]': variant.color === 'Gray',
+                          'bg-[hsl(325,90%,70%)]': variant.color === 'Pink',
+                        }
+                      )}
+                    />
+                    <span className="sr-only">{variant.color}</span>
+                  </Label>
+                ))}
+              </RadioGroup>
+            </div>
+
+            {/* Bottone */}
+            <Button 
+              className="w-full bg-[hsl(222.2,84%,4.9%)] hover:bg-[hsl(222.2,84%,4.9%)/90] text-white py-7 text-lg rounded-xl transition-all duration-200 shadow-sm" 
+              size="lg"
+              variant="default"
+            >
+              <ShoppingBag className="mr-3 h-6 w-6" />
+              Add to Cart
+            </Button>
+
+            {/* Info aggiuntive */}
+            <div className="border-t pt-6 space-y-4 text-sm">
+              <div className="flex gap-2">
+                <ShoppingBag className="h-5 w-5 text-muted-foreground" />
+                <p className="text-muted-foreground">Free delivery on orders over $50</p>
               </div>
+              <p className="text-muted-foreground">
+                Our signature quilted bag combines style and functionality. Perfect for everyday use or special occasions.
+              </p>
             </div>
           </div>
-
-          <Button 
-            className="w-full bg-black hover:bg-black/90 text-white" 
-            size="lg"
-            variant="default"
-          >
-            <ShoppingBag className="mr-2 h-5 w-5" />
-            Add to Bag
-          </Button>
         </div>
       </motion.div>
     </div>
