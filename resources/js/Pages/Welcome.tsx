@@ -4,6 +4,7 @@ import Layout from '@/Layouts/Layout';
 import HeroSection from '@/Components/HeroSection';
 import About from '@/Components/About';
 import Display from '@/Components/Display';
+import CTASection from '@/Components/CTA';
 
 interface WelcomeProps extends PageProps {
     auth: any;
@@ -18,6 +19,7 @@ export default function Welcome({ stripeKey }: WelcomeProps) {
             <Head title="Glide" />
             <Layout>
                 <HeroSection isVisible={true} /> 
+                <CTASection />
                 <Display />
                 <About />
             </Layout>

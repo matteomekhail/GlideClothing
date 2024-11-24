@@ -15,7 +15,7 @@ const productVariants = [
       '/img/Prodotti/Black1.jpg',
       '/img/Lifestyle/Lifestyle-Black-1.jpg',
       '/img/Prodotti/Black2.jpg',
-      '/img/Lifestyle/Lifestyle-Black-2.jpg'
+      '/img/Prodotti/Black4.jpg'
     ]
   },
   {
@@ -24,7 +24,7 @@ const productVariants = [
       '/img/Prodotti/Blue1.jpg',
       '/img/Lifestyle/Lifestyle-Blue-1.jpg',
       '/img/Prodotti/Blue2.jpg',
-      '/img/Lifestyle/Lifestyle-Blue-2.jpg'
+      '/img/Prodotti/Blue3.jpg'
     ]
   },
   {
@@ -33,7 +33,7 @@ const productVariants = [
       '/img/Prodotti/White1.jpg',
       '/img/Lifestyle/Lifestyle-White-1.jpg',
       '/img/Prodotti/White2.jpg',
-      '/img/Lifestyle/Lifestyle-White-2.jpg'
+      '/img/Prodotti/White4.jpg'
     ]
   },
   {
@@ -42,7 +42,7 @@ const productVariants = [
       '/img/Prodotti/Pink1.jpg',
       '/img/Lifestyle/Lifestyle-Pink-1.jpg',
       '/img/Prodotti/Pink2.jpg',
-      '/img/Lifestyle/Lifestyle-Pink-2.jpg'
+      '/img/Prodotti/Pink4.jpg'
     ]
   }
 ]
@@ -85,7 +85,7 @@ export default function ProductDisplay() {
 
   return (
     <div className="container mx-auto px-4 py-8 lg:py-12">
-      <h1 className="text-3xl lg:text-4xl font-bold tracking-tight mb-6">Glide Signature Quilted Bag</h1>
+      <h1 className="text-3xl lg:text-4xl font-bold tracking-tight mb-6 text-center">Glide Signature Quilted Bag</h1>
 
       <motion.div 
         initial={false}
@@ -166,7 +166,7 @@ export default function ProductDisplay() {
               <span className="text-xs text-muted-foreground">Price:</span>
               <p className="text-4xl font-bold">
                 <span className="text-lg align-top">$</span>
-                299<span className="text-lg">.99</span>
+                50<span className="text-lg">.00</span>
               </p>
             </div>
 
@@ -221,10 +221,6 @@ export default function ProductDisplay() {
 
             {/* Info aggiuntive */}
             <div className="border-t pt-6 space-y-4 text-sm">
-              <div className="flex gap-2">
-                <ShoppingBag className="h-5 w-5 text-muted-foreground" />
-                <p className="text-muted-foreground">Free delivery on orders over $50</p>
-              </div>
               <p className="text-muted-foreground">
                 Our signature quilted bag combines style and functionality. Perfect for everyday use or special occasions.
               </p>
