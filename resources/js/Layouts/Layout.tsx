@@ -5,8 +5,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/Components/ui/sheet";
 import { Button } from "@/Components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/Components/ui/collapsible";
 import AnimatedLogo from '@/Components/AnimatedLogo';  // Adjust the import path as needed
-
-
+import FaviconSwitcher from '@/Components/FaviconSwitcher';
 
 // Icone dei metodi di pagamento
 const PaymentIcons = () => (
@@ -88,6 +87,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
     return (
         <div className="min-h-screen flex flex-col">
+            <FaviconSwitcher />
             <header className="lg:hidden">
                 <div className="flex justify-between items-center p-4 border-b">
                     <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
