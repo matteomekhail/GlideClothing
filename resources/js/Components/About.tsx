@@ -10,7 +10,7 @@ export default function AboutSection() {
             <img
               alt="Glide signature quilted bag in light gray"
               className="rounded-lg object-cover object-center w-full h-[300px] lg:h-[400px]"
-              src="/img/Lifestyle/Lifestyle-White-4.jpg"
+              src="/img/Lifestyle/Lifestyle-Black-5.jpg"
             />
             <img
               alt="Person carrying a Glide bag"
