@@ -16,36 +16,50 @@ const productVariants = [
     color: 'Black',
     images: [
       '/img/Prodotti/Black1.jpg',
-      '/img/Lifestyle/Lifestyle-Black-1.jpg',
       '/img/Prodotti/Black2.jpg',
-      '/img/Prodotti/Black4.jpg'
+      '/img/Prodotti/Black3.jpg',
+      '/img/Prodotti/Black4.jpg',
+      '/img/Prodotti/Black5.jpg',
+      '/img/Prodotti/Black6.jpg',
+      '/img/Prodotti/Black7.jpg',
+      '/img/Lifestyle/Lifestyle-Black-1.jpg'
     ]
   },
   {
     color: 'Blue',
     images: [
       '/img/Prodotti/Blue1.jpg',
-      '/img/Lifestyle/Lifestyle-Blue-1.jpg',
       '/img/Prodotti/Blue2.jpg',
-      '/img/Prodotti/Blue3.jpg'
+      '/img/Prodotti/Blue3.jpg',
+      '/img/Prodotti/Blue4.jpg',
+      '/img/Prodotti/Blue5.jpg',
+      '/img/Prodotti/Blue6.jpg',
+      '/img/Lifestyle/Lifestyle-Blue-1.jpg',
     ]
   },
   {
     color: 'Gray',
     images: [
       '/img/Prodotti/Gray1.jpg',
-      '/img/Lifestyle/Lifestyle-White-1.jpg',
       '/img/Prodotti/White2.jpg',
-      '/img/Prodotti/White4.jpg'
+      '/img/Prodotti/White3.jpg',
+      '/img/Prodotti/White4.jpg',
+      '/img/Prodotti/White5.jpg',
+      '/img/Lifestyle/Lifestyle-White-1.jpg',
+      '/img/Prodotti/White9.jpg',
     ]
   },
   {
     color: 'Pink',
     images: [
       '/img/Prodotti/Pink1.jpg',
-      '/img/Lifestyle/Lifestyle-Pink-1.jpg',
       '/img/Prodotti/Pink2.jpg',
-      '/img/Prodotti/Pink4.jpg'
+      '/img/Prodotti/Pink3.jpg',
+      '/img/Prodotti/Pink4.jpg',
+      '/img/Prodotti/Pink5.jpg',
+      '/img/Prodotti/Pink6.jpg',
+      '/img/Prodotti/Pink7.jpg',
+      '/img/Lifestyle/Lifestyle-Pink-1.jpg',
     ]
   }
 ]
