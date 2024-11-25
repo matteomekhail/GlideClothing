@@ -103,10 +103,16 @@ export default function ProductDisplay() {
 
 const handleAddToCart = async () => {
   try {
-    // Verifica se l'utente è autenticato
-    const response = await axios.get('/api/user')
+    // Verifichiamo prima l'autenticazione
+    const authResponse = await axios.get('/api/user').catch(() => null)
     
-    // Se arriviamo qui, l'utente è autenticato
+    // Se non c'è risposta, l'utente non è autenticato
+    if (!authResponse) {
+      const currentPath = window.location.pathname
+      window.location.href = `/login-register?redirect_to=${encodeURIComponent(currentPath)}`
+      return
+    }
+
     setIsAddingToCart(true)
     
     const productData = {
@@ -123,12 +129,6 @@ const handleAddToCart = async () => {
     })
 
   } catch (error) {
-    if (axios.isAxiosError(error) && error.response?.status === 401) {
-      // Utente non autenticato, reindirizza alla pagina di login
-      window.location.href = '/login-register'
-      return
-    }
-    
     console.error('Error adding to cart:', error)
     toast.error("Failed to add product to cart. Please try again.", {
       duration: 3000,
