@@ -6,6 +6,7 @@ import { Button } from "@/Components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/Components/ui/collapsible";
 import AnimatedLogo from '@/Components/AnimatedLogo';  // Adjust the import path as needed
 import FaviconSwitcher from '@/Components/FaviconSwitcher';
+import { Link, usePage } from '@inertiajs/react';
 
 // Icone dei metodi di pagamento
 const PaymentIcons = () => (
@@ -25,9 +26,39 @@ interface MenuItem {
     items: string[];
 }
 
+interface User {
+    name: string;
+    email: string;
+}
+
+interface PageProps {
+    auth: {
+        user: User | null;
+    };
+}
+
 const Layout: React.FC<LayoutProps> = ({ children }) => {
     const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
     const [isSheetOpen, setIsSheetOpen] = useState(false);
+    const { auth } = usePage().props as unknown as PageProps;
+
+    const UserButton = () => {
+        if (auth.user) {
+            return (
+                <div className="text-sm font-medium">
+                    Hi, {auth.user.name.split(' ')[0]}
+                </div>
+            );
+        }
+
+        return (
+            <Button variant="ghost" size="icon" asChild>
+                <Link href={route('login-register')}>
+                    <User />
+                </Link>
+            </Button>
+        );
+    };
 
     /*const categories: string[] = ['CHIC TECH MATRIX'];
     const menuItems: Record<string, MenuItem[]> = {
@@ -128,15 +159,19 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                             <div className="mt-6">
                                 <h3 className="text-lg font-semibold mb-2">MORE</h3>
                                 <div className="space-y-2">
-                                    <a href="#" className="block text-gray-600">Sign Up</a>
+                                    {!auth.user && (
+                                        <a href={route('login-register')} className="block text-gray-600">Sign Up</a>
+                                    )}
                                 </div>
                             </div>
                         </SheetContent>
                     </Sheet>
                     <AnimatedLogo />
-                    <div className="flex space-x-2">
-                        <Button variant="ghost" size="icon"><User /></Button>
-                        <Button variant="ghost" size="icon"><ShoppingBag /></Button>
+                    <div className="flex items-center space-x-2">
+                        <UserButton />
+                        <Button variant="ghost" size="icon">
+                            <ShoppingBag />
+                        </Button>
                     </div>
                 </div>
             </header>
@@ -146,7 +181,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <div className="flex justify-between items-center px-6 py-2 bg-gray-100 text-sm">
                     <div className="flex space-x-4">
                         <a href="#" className="text-gray-600">Account</a>
-                        <a href="#" className="text-gray-600">Sign Up</a>
+                        {!auth.user && (
+                            <a href={route('login-register')} className="text-gray-600">Sign Up</a>
+                        )}
                     </div>
                     <div className="flex items-center space-x-4">
                         <a href={route('blog.index')} className="text-gray-600">Blog</a>
@@ -167,8 +204,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                         ))}
                     </nav> */}
                     <div className="flex items-center space-x-4">
-                        <Button variant="ghost" size="icon"><User /></Button>
-                        <Button variant="ghost" size="icon"><ShoppingBag /></Button>
+                        <UserButton />
+                        <Button variant="ghost" size="icon">
+                            <ShoppingBag />
+                        </Button>
                     </div>
                 </div>
             </header>
@@ -239,8 +278,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                         <div>
                             <h3 className="font-bold mb-4">MY ACCOUNT</h3>
                             <ul className="space-y-2">
-                                <li><a href="#" className="hover:underline">Login</a></li>
-                                <li><a href="#" className="hover:underline">Register</a></li>
+                                <li><a href={route('login-register')} className="hover:underline">Login</a></li>
+                                <li><a href={route('login-register')} className="hover:underline">Register</a></li>
                             </ul>
                         </div>
                         <div>
