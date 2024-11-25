@@ -273,10 +273,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                         <div>
                             <h3 className="font-bold mb-4">HELP</h3>
                             <ul className="space-y-2">
-                                <li><a href="/FAQ" className="hover:underline">FAQ</a></li>
                                 <li><a href="#" className="hover:underline">Delivery Information</a></li>
                                 <li><a href="#" className="hover:underline">Returns Policy</a></li>
-                                <li><a href="#" className="hover:underline">Make A Return</a></li>
                             </ul>
                         </div>
                         <div>
@@ -287,13 +285,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                             </ul>
                         </div>
                         <div>
-                            <h3 className="font-bold mb-4">PAGES</h3>
-                            <ul className="space-y-2">
-                                <li><a href="#" className="hover:underline">Refer a Friend</a></li>
-                                <li><a href="#" className="hover:underline">About Us</a></li>
-                            </ul>
-                        </div>
-                        <div>
                             <h3 className="font-bold mb-4">MORE ABOUT GLIDE</h3>
                             <div className="grid grid-cols-3 gap-4">
                                 <a href='/blog'>
@@ -301,9 +292,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                                         <span className="text-xs font-semibold">BLOG</span>
                                     </div>
                                 </a>
-                                <div className="bg-gray-100 p-4 flex flex-col items-center justify-center">
-                                    <span className="text-xs font-semibold">EMAIL SIGN UP</span>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -319,7 +307,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                             <a href="#" className="hover:underline">Terms of Use</a>
                             <a href="#" className="hover:underline">Privacy Notice</a>
                             <a href="#" className="hover:underline">Cookie Policy</a>
-                            <a href="#" className="hover:underline">Modern Slavery</a>
                         </div>
                     </div>
                 </div>
