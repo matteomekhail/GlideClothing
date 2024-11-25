@@ -141,14 +141,16 @@ const handleAddToCart = async () => {
   return (
     <>
       <Toaster position="top-center" />
-      <div className="container mx-auto px-4 py-8 lg:py-12">
-        <h1 className="text-3xl lg:text-4xl font-bold tracking-tight mb-6 text-center">Glide Signature Quilted Bag</h1>
+      <div className="container mx-auto px-2 sm:px-4 py-4 sm:py-8 lg:py-12 max-w-full overflow-x-hidden">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-4 sm:mb-6 text-center">
+          Glide Signature Quilted Bag
+        </h1>
 
         <motion.div 
           initial={false}
-          className="grid lg:grid-cols-12 gap-8 lg:gap-12"
+          className="grid lg:grid-cols-12 gap-4 sm:gap-8 lg:gap-12 w-full"
         >
-          <div className="lg:col-span-7 relative space-y-4">
+          <div className="lg:col-span-7 relative space-y-2 sm:space-y-4 w-full">
             <AnimatePresence mode="wait">
               <motion.div 
                 key={`${currentVariant}-${currentImage}`}
@@ -190,7 +192,7 @@ const handleAddToCart = async () => {
               <span className="sr-only">Next image</span>
             </Button>
 
-            <div className="flex gap-3 overflow-x-auto pb-2 px-1">
+            <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-2 px-1 scrollbar-hide">
               {productVariants[currentVariant].images.map((img, index) => (
                 <motion.button
                   key={index}
@@ -201,7 +203,7 @@ const handleAddToCart = async () => {
                     setCurrentImage(index)
                   }}
                   className={cn(
-                    "relative flex-shrink-0 w-20 h-20 rounded-md overflow-hidden border-2",
+                    "relative flex-shrink-0 w-14 sm:w-20 h-14 sm:h-20 rounded-md overflow-hidden border-2",
                     currentImage === index ? "border-primary" : ""
                   )}
                 >
@@ -216,8 +218,8 @@ const handleAddToCart = async () => {
             </div>
           </div>
 
-          <div className="lg:col-span-5 flex items-center">
-            <div className="border rounded-lg p-8 space-y-8 bg-white shadow-sm w-full">
+          <div className="lg:col-span-5 w-full">
+            <div className="border rounded-lg p-4 sm:p-8 space-y-4 sm:space-y-8 bg-white shadow-sm w-full">
               {/* Prezzo */}
               <div className="border-b pb-6">
                 <span className="text-xs text-muted-foreground">Price:</span>
