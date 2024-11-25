@@ -6,7 +6,7 @@ export default function AboutSection() {
     <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
       <div className="container px-4 md:px-6">
         <div className="grid gap-6 lg:grid-cols-[1fr_1fr] lg:gap-12">
-          <div className="relative">
+          <div className="relative pb-[120px] lg:pb-[150px]">
             <img
               alt="Glide signature quilted bag in light gray"
               className="rounded-lg object-cover object-center w-full h-[300px] lg:h-[400px]"
@@ -14,7 +14,7 @@ export default function AboutSection() {
             />
             <img
               alt="Person carrying a Glide bag"
-              className="rounded-lg object-cover object-center w-2/3 h-[200px] lg:h-[300px] absolute right-0 bottom-[-100px] border-4 border-white"
+              className="rounded-lg object-cover object-center w-2/3 h-[200px] lg:h-[300px] absolute right-0 bottom-0 border-4 border-white"
               src="/img/Lifestyle/Lifestyle-Blue-1.jpg"
             />
           </div>
