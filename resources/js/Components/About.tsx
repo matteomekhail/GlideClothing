@@ -12,11 +12,11 @@ export default function AboutSection() {
               className="rounded-lg object-cover object-center w-full h-[300px] lg:h-[400px]"
               src="/img/Lifestyle/Lifestyle-Black-5.jpg"
             />
-            <img
+            {/*<img
               alt="Person carrying a Glide bag"
               className="rounded-lg object-cover object-center w-2/3 h-[200px] lg:h-[300px] absolute right-0 bottom-0 border-4 border-white"
               src="/img/Lifestyle/Lifestyle-Blue-1.jpg"
-            />
+            /> */}
           </div>
           <div className="flex flex-col justify-center space-y-4 lg:pt-24">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">About Glide</h2>
