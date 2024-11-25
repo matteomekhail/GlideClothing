@@ -19,7 +19,6 @@ export default function Welcome({ stripeKey }: WelcomeProps) {
             <Head title="Glide" />
             <Layout>
                 <HeroSection isVisible={true} /> 
-                <CTASection />
                 <Display />
                 <About />
             </Layout>

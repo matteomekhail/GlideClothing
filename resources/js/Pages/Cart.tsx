@@ -28,18 +28,21 @@ interface ShippingOption {
 
 interface Props {
     stripeKey: string;
+    cartItems: Record<string, {
+        name: string;
+        color: string;
+        price: number;
+        quantity: number;
+    }>;
 }
 
-export default function Cart({ stripeKey }: Props) {
-    const [cartItems, setCartItems] = React.useState<CartItem[]>([
-        {
-            id: 1,
-            name: "Glide Signature Quilted Bag",
-            color: "Black",
-            price: 50.00,
-            quantity: 1
-        }
-    ]);
+export default function Cart({ stripeKey, cartItems: initialCartItems }: Props) {
+    const [cartItems, setCartItems] = React.useState(
+        Object.entries(initialCartItems).map(([id, item]) => ({
+            id,
+            ...item
+        }))
+    );
 
     const [selectedShipping, setSelectedShipping] = React.useState<ShippingOption['id']>('normal');
 
@@ -58,20 +61,44 @@ export default function Cart({ stripeKey }: Props) {
         }
     ];
 
-    const updateQuantity = (id: number, change: number) => {
-        setCartItems(items =>
-            items.map(item =>
-                item.id === id
-                    ? { ...item, quantity: Math.max(1, item.quantity + change) }
-                    : item
-            )
-        );
-        toast.success("Cart updated successfully");
+    const updateQuantity = async (id: string, change: number) => {
+        const currentItem = cartItems.find(item => item.id === id);
+        if (!currentItem) return;
+        
+        const newQuantity = currentItem.quantity + change;
+        if (newQuantity < 1) return;
+
+        try {
+            await axios.post('/cart/update', {
+                id: id,
+                name: currentItem.name,
+                color: currentItem.color,
+                price: currentItem.price,
+                quantity: newQuantity
+            });
+
+            setCartItems(items =>
+                items.map(item =>
+                    item.id === id
+                        ? { ...item, quantity: newQuantity }
+                        : item
+                )
+            );
+            toast.success("Cart updated successfully");
+        } catch (error) {
+            console.error('Error updating quantity:', error);
+            toast.error("Failed to update cart");
+        }
     };
 
-    const removeItem = (id: number) => {
-        setCartItems(items => items.filter(item => item.id !== id));
-        toast.success("Item removed from cart");
+    const removeItem = async (id: string) => {
+        try {
+            await axios.delete(`/cart/${id}`);
+            setCartItems(items => items.filter(item => item.id !== id));
+            toast.success("Item removed from cart");
+        } catch (error) {
+            toast.error("Failed to remove item");
+        }
     };
 
     const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
@@ -167,7 +194,7 @@ export default function Cart({ stripeKey }: Props) {
                                                         <Button
                                                             variant="outline"
                                                             size="icon"
-                                                            onClick={() => updateQuantity(item.id, -1)}
+                                                            onClick={() => updateQuantity(item.id.toString(), -1)}
                                                             className="h-8 w-8 rounded-full border-2 hover:bg-gray-100"
                                                         >
                                                             <Minus className="h-3 w-3" />
@@ -178,7 +205,7 @@ export default function Cart({ stripeKey }: Props) {
                                                         <Button
                                                             variant="outline"
                                                             size="icon"
-                                                            onClick={() => updateQuantity(item.id, 1)}
+                                                            onClick={() => updateQuantity(item.id.toString(), 1)}
                                                             className="h-8 w-8 rounded-full border-2 hover:bg-gray-100"
                                                         >
                                                             <Plus className="h-3 w-3" />
@@ -192,7 +219,7 @@ export default function Cart({ stripeKey }: Props) {
                                                     <Button
                                                         variant="ghost"
                                                         size="icon"
-                                                        onClick={() => removeItem(item.id)}
+                                                        onClick={() => removeItem(item.id.toString())}
                                                         className="text-red-500 hover:text-red-600 hover:bg-red-50"
                                                     >
                                                         <Trash2 className="h-4 w-4" />

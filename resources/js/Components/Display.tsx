@@ -33,7 +33,7 @@ const productVariants = [
   {
     color: 'Gray',
     images: [
-      '/img/Prodotti/White1.jpg',
+      '/img/Prodotti/Gray1.jpg',
       '/img/Lifestyle/Lifestyle-White-1.jpg',
       '/img/Prodotti/White2.jpg',
       '/img/Prodotti/White4.jpg'
@@ -87,26 +87,27 @@ export default function ProductDisplay() {
     setCurrentImage((prev) => (prev - 1 + productVariants[currentVariant].images.length) % productVariants[currentVariant].images.length)
   }
 
-  const handleAddToCart = async () => {
-    try {
-      setIsAddingToCart(true)
-      
-      const productData = {
-        name: 'Glide Signature Quilted Bag',
-        color: productVariants[currentVariant].color,
-        price: 50.00,
-        quantity: 1,
-      }
+const handleAddToCart = async () => {
+  try {
+    setIsAddingToCart(true)
+    
+    const productData = {
+      name: 'Glide Signature Quilted Bag',
+      color: productVariants[currentVariant].color,
+      price: 50.00,
+      quantity: 1,
+    }
 
-      const response = await axios.post('/cart', productData)
-      
-      // Add a success toast notification
-      toast.success("Product added to cart successfully", {
-        duration: 3000,
-      })
+    console.log('Sending to cart:', productData); // Aggiungi questo log
 
-      console.log('Product added to cart:', response.data)
-    } catch (error) {
+    const response = await axios.post('/cart', productData)
+    
+    toast.success("Product added to cart successfully", {
+      duration: 3000,
+    })
+
+    console.log('Product added to cart:', response.data)
+  } catch (error) {
       console.error('Error adding to cart:', error)
       
       // Add an error toast notification

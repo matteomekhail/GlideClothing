@@ -61,36 +61,24 @@ class CartController extends Controller
     /**
      * Update cart item quantity
      */
-    public function update(Request $request, string $itemId)
+    public function update(Request $request)
     {
-        try {
-            $validated = $request->validate([
-                'quantity' => 'required|integer|min:1',
-            ]);
-
-            $cart = session()->get('cart', []);
-
-            if (!isset($cart[$itemId])) {
-                return response()->json([
-                    'message' => 'Cart item not found'
-                ], 404);
-            }
-
-            $cart[$itemId]['quantity'] = $validated['quantity'];
+        $cart = session()->get('cart', []);
+        $id = $request->input('id');
+        
+        if (isset($cart[$id])) {
+            $cart[$id]['quantity'] = $request->input('quantity');
             session()->put('cart', $cart);
-
+            
             return response()->json([
                 'message' => 'Cart updated successfully',
-                'cart_item' => $cart[$itemId]
-            ], 200);
-
-        } catch (\Exception $e) {
-            Log::error('Cart update error: ' . $e->getMessage());
-            return response()->json([
-                'message' => 'Error updating cart',
-                'error' => $e->getMessage()
-            ], 500);
+                'cart' => $cart
+            ]);
         }
+        
+        return response()->json([
+            'message' => 'Item not found in cart'
+        ], 404);
     }
 
     /**

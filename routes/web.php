@@ -66,6 +66,7 @@
             ->name('cart.checkout.session');
         Route::get('/checkout/success', [CartCheckoutController::class, 'success'])
             ->name('checkout.success');
+        Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
     });
 
     require __DIR__ . '/auth.php';
