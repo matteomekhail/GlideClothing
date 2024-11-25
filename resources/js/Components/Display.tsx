@@ -103,6 +103,10 @@ export default function ProductDisplay() {
 
 const handleAddToCart = async () => {
   try {
+    // Verifica se l'utente è autenticato
+    const response = await axios.get('/api/user')
+    
+    // Se arriviamo qui, l'utente è autenticato
     setIsAddingToCart(true)
     
     const productData = {
@@ -112,26 +116,27 @@ const handleAddToCart = async () => {
       quantity: 1,
     }
 
-    console.log('Sending to cart:', productData); // Aggiungi questo log
-
-    const response = await axios.post('/cart', productData)
+    const cartResponse = await axios.post('/cart', productData)
     
     toast.success("Product added to cart successfully", {
       duration: 3000,
     })
 
-    console.log('Product added to cart:', response.data)
   } catch (error) {
-      console.error('Error adding to cart:', error)
-      
-      // Add an error toast notification
-      toast.error("Failed to add product to cart. Please try again.", {
-        duration: 3000,
-      })
-    } finally {
-      setIsAddingToCart(false)
+    if (axios.isAxiosError(error) && error.response?.status === 401) {
+      // Utente non autenticato, reindirizza alla pagina di login
+      window.location.href = '/login-register'
+      return
     }
+    
+    console.error('Error adding to cart:', error)
+    toast.error("Failed to add product to cart. Please try again.", {
+      duration: 3000,
+    })
+  } finally {
+    setIsAddingToCart(false)
   }
+}
 
   return (
     <>
