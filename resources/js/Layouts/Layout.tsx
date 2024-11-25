@@ -169,8 +169,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     <AnimatedLogo />
                     <div className="flex items-center space-x-2">
                         <UserButton />
-                        <Button variant="ghost" size="icon">
-                            <ShoppingBag />
+                        <Button variant="ghost" size="icon" asChild>
+                            <Link href={route('cart.index')}>
+                                <ShoppingBag />
+                            </Link>
                         </Button>
                     </div>
                 </div>
@@ -205,8 +207,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     </nav> */}
                     <div className="flex items-center space-x-4">
                         <UserButton />
-                        <Button variant="ghost" size="icon">
-                            <ShoppingBag />
+                        <Button variant="ghost" size="icon" asChild>
+                            <Link href={route('cart.index')}>
+                                <ShoppingBag />
+                            </Link>
                         </Button>
                     </div>
                 </div>

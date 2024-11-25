@@ -7,6 +7,7 @@
     use App\Http\Controllers\CheckoutController;
     use App\Http\Controllers\BlogPostController;
     use App\Http\Controllers\CartController;
+    use App\Http\Controllers\CartCheckoutController;
 
     Route::get('/', function () {
         return Inertia::render('Welcome', [
@@ -55,6 +56,16 @@
         ]);
     })->middleware('guest')->name('login-register');
 
-    Route::post('/cart', [CartController::class, 'store']);
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+        Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
+        Route::patch('/cart/{itemId}', [CartController::class, 'update'])->name('cart.update');
+        Route::delete('/cart/{itemId}', [CartController::class, 'destroy'])->name('cart.destroy');
+        Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
+        Route::post('/create-cart-checkout-session', [CartCheckoutController::class, 'createSession'])
+            ->name('cart.checkout.session');
+        Route::get('/checkout/success', [CartCheckoutController::class, 'success'])
+            ->name('checkout.success');
+    });
 
     require __DIR__ . '/auth.php';
