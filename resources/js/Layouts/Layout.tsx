@@ -300,7 +300,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     </div>
 
                     <div className="mt-8 text-sm text-gray-600 flex flex-col md:flex-row justify-between items-center">
-                        <div>© 2024 | Glide | All Rights Reserved. |</div>
+                        <div>© 2024 | Glide | All Rights Reserved. | Owned by GYM GLIDE PTY LTD</div>
                         <div className="flex flex-wrap justify-center md:justify-end space-x-4 mt-4 md:mt-0">
                             <a href="#" className="hover:underline">Terms and Conditions</a>
                             <a href="#" className="hover:underline">Terms of Use</a>
